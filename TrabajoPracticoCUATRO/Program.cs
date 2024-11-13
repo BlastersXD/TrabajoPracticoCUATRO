@@ -12,31 +12,43 @@ namespace TrabajoPracticoCUATRO
         {
             CODESKY CODESKY = new CODESKY();
             CODESKY.CargarDatos("vuelos.xml");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("  ------------> Bienvenidos a Codesky <------------");
+            Console.ResetColor();
 
             bool salir = false;
             while (!salir)
             {
-                Console.WriteLine("\nMenú de opciones:");
-                Console.WriteLine("1. Agregar vuelo");
-                Console.WriteLine("2. Registrar pasajeros");
-                Console.WriteLine("3. Calcular ocupación media de la flota");
-                Console.WriteLine("4. Vuelo con mayor ocupación");
-                Console.WriteLine("5. Buscar vuelo por código");
-                Console.WriteLine("6. Listar vuelos ordenados por ocupación");
-                Console.WriteLine("7. Salir");
-                Console.Write("Seleccione una opción: ");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine(" -------------------------------------------------");
+                Console.WriteLine("|Menú de opciones:                                |");
+                Console.WriteLine(" -------------------------------------------------");
+                Console.WriteLine("|1. Agregar vuelo                                 |");
+                Console.WriteLine("|2. Registrar pasajeros                           |");
+                Console.WriteLine("|3. Calcular ocupación media de la flota          |");
+                Console.WriteLine("|4. Vuelo con mayor ocupación                     |");
+                Console.WriteLine("|5. Buscar vuelo por código                       |");
+                Console.WriteLine("|6. Listar vuelos ordenados por ocupación         |");
+                Console.WriteLine("|7. Salir                                         |");
+                Console.WriteLine(" -------------------------------------------------");
+                Console.Write("\nSeleccione una opción: ");
+                Console.ResetColor();
+
 
                 string opcion = Console.ReadLine();
                 switch (opcion)
                 {
                     case "1":
+
                         AgregarVuelo(CODESKY);
                         break;
                     case "2":
                         RegistrarPasajeros(CODESKY);
                         break;
                     case "3":
+                        
                         Console.WriteLine("Ocupación media de la flota: " + CODESKY.CalcularOcupacionMedia() + "%");
+                        
                         break;
                     case "4":
                         var vueloMayorOcupacion = CODESKY.VueloConMayorOcupacion();
@@ -76,6 +88,7 @@ namespace TrabajoPracticoCUATRO
 
         private static void AgregarVuelo(CODESKY aerolinea)
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Write("Ingrese el código del vuelo: ");
             string codigoVuelo = Console.ReadLine();
 
@@ -106,6 +119,7 @@ namespace TrabajoPracticoCUATRO
 
             aerolinea.AgregarVuelo(vuelo);
             Console.WriteLine("Vuelo agregado exitosamente.");
+            Console.ResetColor();
         }
 
         private static void RegistrarPasajeros(CODESKY CODESKY)
